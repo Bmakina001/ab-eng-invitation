@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500&family=Noto+Serif+Telugu:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-ivory: #fff9f0;
+  --color-paper: #f5ebdd;
+  --color-gold: #b08d57;
+  --color-gold-deep: #8a6a36;
+  --color-gold-soft: #d8bd83;
+  --color-maroon: #641e2b;
+  --color-maroon-soft: #873c49;
+  --color-sage: #4e624b;
+  --font-serif: 'Cormorant Garamond', 'Noto Serif Telugu', Georgia, serif;
+  --font-sans: 'Jost', system-ui, sans-serif;
+  --font-telugu: 'Noto Serif Telugu', 'Cormorant Garamond', serif;
+}
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background-color: var(--color-ivory);
+  color: var(--color-maroon);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+.paper {
+  background-color: var(--color-ivory);
+  background-image:
+    radial-gradient(rgba(176, 141, 87, 0.07) 1px, transparent 1px),
+    radial-gradient(rgba(100, 30, 43, 0.04) 1px, transparent 1px);
+  background-size: 22px 22px, 37px 37px;
+  background-position: 0 0, 11px 17px;
+}
+.te { font-family: var(--font-telugu); line-height: 1.9; word-break: normal; overflow-wrap: anywhere; }
+.display { font-family: var(--font-serif); }
+.eyebrow { font-family: var(--font-sans); letter-spacing: 0.28em; text-transform: uppercase; font-size: 0.72rem; color: var(--color-gold-deep); }
+.gold-text { color: var(--color-gold-deep); }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  min-height: 48px; padding: 0.7rem 1.6rem; border-radius: 999px;
+  font-family: var(--font-sans); font-size: 0.82rem; letter-spacing: 0.16em; text-transform: uppercase;
+  border: 1px solid var(--color-gold); cursor: pointer; text-decoration: none;
+  transition: transform .3s ease, background-color .3s ease, color .3s ease, box-shadow .3s ease;
+}
+.btn-primary { background: var(--color-maroon); color: var(--color-ivory); }
+.btn-primary:hover { background: var(--color-maroon-soft); transform: translateY(-2px); box-shadow: 0 8px 20px -10px rgba(100,30,43,.6); }
+.btn-ghost { background: transparent; color: var(--color-maroon); }
+.btn-ghost:hover { background: rgba(176,141,87,.14); transform: translateY(-2px); }
+:focus-visible { outline: 2px solid var(--color-maroon); outline-offset: 3px; }
+.frame {
+  position: relative;
+  border: 1px solid var(--color-gold);
+  outline: 1px solid var(--color-gold-soft);
+  outline-offset: 6px;
+  background: rgba(255, 249, 240, 0.7);
+}
+.frame::before {
+  content: ''; position: absolute; inset: 6px; border: 1px solid rgba(100, 30, 43, 0.35); pointer-events: none;
+}
+.lamp-flame { transform-origin: 50% 100%; animation: flicker 3s ease-in-out infinite; }
+@keyframes flicker { 0%,100% { transform: scale(1) } 50% { transform: scale(1.12, 0.94) } }
+@keyframes sway { 0%,100% { transform: rotate(-1.5deg) } 50% { transform: rotate(1.5deg) } }
+.sway { transform-origin: 50% 0; animation: sway 7s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .lamp-flame, .sway { animation: none; }
+  * { transition-duration: 0.01ms !important; }
+}
